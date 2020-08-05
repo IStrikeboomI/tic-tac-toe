@@ -6,10 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GuiActionListener implements ActionListener {
-    private static JButton button;
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        button = (JButton) e.getSource();
+        //gets button
+         JButton button = (JButton) e.getSource();
 
         switch (button.getY()) {
             case 20:

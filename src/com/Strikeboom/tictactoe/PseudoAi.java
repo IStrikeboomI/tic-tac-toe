@@ -10,8 +10,10 @@ public class PseudoAi {
     private static Timer timer = new Timer();
 
     protected static void PsuedoAi() {
+
         randslot = random.nextInt(8);
         if (!Gui.gameended) {
+            //does a timer task to delay computer response
             timer.schedule(tt(), random.nextInt(1500) + 1000);
         }
     }
