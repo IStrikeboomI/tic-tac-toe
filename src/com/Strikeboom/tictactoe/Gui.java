@@ -72,20 +72,10 @@ public class Gui {
         boardlabels.get(index).setText(Gui.buttonstates[index]);
         boardlabels.get(index).setForeground(playerturn ? new Color(255, 56, 69): new Color(73, 90, 255));
         buttons.get(index).removeActionListener(new GuiActionListener());
-        updatelabel();
+        label.setText(playerturn ? "Your Turn!":"Opponent's Turn!");
+        label.setLocation(playerturn? new Point(110,280):new Point(87,280));
         CheckForWin.checkforwins();
         Gui.playerturn = !playerturn;
-    }
-    private static void updatelabel() {
-        if (Gui.Text.equals("Your Turn!")) {
-            Gui.Text = "Opponent's Turn!";
-            label.setLocation(87,280);
-        } else {
-            Gui.Text = "Your Turn!";
-            label.setLocation(110,280);
-        }
-        label.setText(Text);
-        label.setSize(label.getPreferredSize());
     }
     protected static void ongameend(int typeofend) {
             Gui.gameended = true;
