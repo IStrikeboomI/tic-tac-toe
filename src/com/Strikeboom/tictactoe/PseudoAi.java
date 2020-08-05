@@ -1,6 +1,5 @@
 package com.Strikeboom.tictactoe;
 
-import java.awt.*;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -21,22 +20,16 @@ public class PseudoAi {
             @Override
             public void run() {
                 boolean avalibleslot = true;
+
                 while (Gui.buttonstates[randslot] != null&&!Gui.playerturn  && !Gui.gameended && avalibleslot) {
-                    if (CheckForWin.checkfortie() ) {
+                    if (CheckForWin.checkfortie()) {
                         avalibleslot = false;
                         CheckForWin.checkforwins();
                     }
                     randslot = random.nextInt(8);
                 }
                 if (avalibleslot && Gui.buttonstates[randslot] == null && !Gui.playerturn&&!Gui.gameended) {
-                    Gui.buttons.get(randslot).setLocation(-29,-29);
-                    Gui.buttonstates[randslot] = "O";
-                    Gui.boardlabels.get(randslot).setText(Gui.buttonstates[randslot]);
-                    Gui.boardlabels.get(randslot).setForeground(new Color(73, 90, 255));
-                    Gui.buttons.get(randslot).removeActionListener(new GuiActionListener());
-                    Gui.updatelabel();
-                    CheckForWin.checkforwins();
-                    Gui.playerturn = true;
+                    Gui.checkandrun(randslot,false);
                     timer.purge();
                 }
             }

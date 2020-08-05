@@ -5,18 +5,17 @@ import java.awt.*;
 import java.util.ArrayList;
 
 public class Gui {
-    static JFrame frame;
-    protected static String Text = "Your Turn!";
-    protected static JLabel label;
-    protected static JLabel endlabel;
+    private static JFrame frame;
+    private static String Text = "Your Turn!";
+    private static JLabel label;
+    private static JLabel endlabel;
+    private static ArrayList<JButton> buttons = new ArrayList<JButton>();
+    private static ArrayList<JLabel> boardlabels = new ArrayList<JLabel>();
 
+    protected static String[] buttonstates = new String[9];
     protected static boolean playerturn = true;
     protected static boolean gameended = false;
 
-    protected static ArrayList<JButton> buttons = new ArrayList<JButton>();
-    protected static ArrayList<JLabel> boardlabels = new ArrayList<JLabel>();
-    protected static String buttonstate1,buttonstate2, buttonstate3, buttonstate4, buttonstate5, buttonstate6, buttonstate7, buttonstate8, buttonstate9;
-    protected static String[] buttonstates = {buttonstate1, buttonstate2, buttonstate3, buttonstate4, buttonstate5, buttonstate6, buttonstate7, buttonstate8, buttonstate9};
     protected Gui() {
         frame = new JFrame("Tic-Tac-Toe");
 
@@ -67,7 +66,17 @@ public class Gui {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
-    protected static void updatelabel() {
+    protected static void checkandrun(int index,boolean playerturn) {
+        buttons.get(index).setLocation(-29,-29);
+        buttonstates[index] = playerturn ? "X":"O";
+        boardlabels.get(index).setText(Gui.buttonstates[index]);
+        boardlabels.get(index).setForeground(playerturn ? new Color(255, 56, 69): new Color(73, 90, 255));
+        buttons.get(index).removeActionListener(new GuiActionListener());
+        updatelabel();
+        CheckForWin.checkforwins();
+        Gui.playerturn = !playerturn;
+    }
+    private static void updatelabel() {
         if (Gui.Text.equals("Your Turn!")) {
             Gui.Text = "Opponent's Turn!";
             label.setLocation(87,280);
@@ -79,12 +88,12 @@ public class Gui {
         label.setSize(label.getPreferredSize());
     }
     protected static void ongameend(int typeofend) {
+            Gui.gameended = true;
             //makes a new background to remove everything
             JPanel newpanel = new JPanel(null);
             frame.setContentPane(newpanel);
             newpanel.revalidate();
             newpanel.repaint();
-            Gui.gameended = true;
             /*
             0 is a tie
             1 is a win

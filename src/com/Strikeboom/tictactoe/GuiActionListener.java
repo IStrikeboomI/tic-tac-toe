@@ -15,59 +15,52 @@ public class GuiActionListener implements ActionListener {
             case 20:
                 //button 1
                 if (button.getX() == 20) {
-                    checkandrun(1);
+                    checkandrun(0);
                 }
                 //button 2
                 else if (button.getX() == 120) {
-                    checkandrun(2);
+                    checkandrun(1);
                 }
                 //button 3
                 else {
-                    checkandrun(3);
+                    checkandrun(2);
                 }
                 break;
 
             case 120:
                 //button 4
                 if (button.getX() == 20) {
-                    checkandrun(4);
+                    checkandrun(3);
                 }
                 //button 5
                 else if (button.getX() == 120) {
-                    checkandrun(5);
+                    checkandrun(4);
                 }
                 //button 6
                 else {
-                    checkandrun(6);
+                    checkandrun(5);
                 }
                 break;
 
             case 220:
                 //button 7
                 if (button.getX() == 20) {
-                    checkandrun(7);
+                    checkandrun(6);
                 }
                 //button 8
                 else if (button.getX() == 120) {
-                    checkandrun(8);
+                    checkandrun(7);
                 }
                 //button 9
                 else {
-                    checkandrun(9);
+                    checkandrun(8);
                 }
                 break;
         }
     }
     private static void checkandrun(int index) {
-        if (Gui.playerturn &&!Gui.gameended&&Gui.buttonstates[index - 1] == null) {
-            Gui.buttonstates[index - 1] = "X";
-            Gui.boardlabels.get(index -1).setText(Gui.buttonstates[index - 1]);
-            Gui.boardlabels.get(index -1 ).setForeground(new Color(255, 56, 69));
-            Gui.updatelabel();
-            Gui.playerturn = false;
-            Gui.buttons.get(index -1).setLocation(-29,-29);
-            CheckForWin.checkforwins();
-            Gui.buttons.get(index - 1).removeActionListener(new GuiActionListener());
+        if (Gui.playerturn &&!Gui.gameended&&Gui.buttonstates[index] == null) {
+            Gui.checkandrun(index,true);
             PseudoAi.PsuedoAi();
         }
     }
