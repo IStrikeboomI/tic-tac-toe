@@ -22,7 +22,7 @@ public class PseudoAi {
             @Override
             public void run() {
                 boolean avalibleslot = true;
-
+                //checks for any avalible slots
                 while (Gui.buttonstates[randslot] != null&&!Gui.playerturn  && !Gui.gameended && avalibleslot) {
                     if (CheckForWin.checkfortie()) {
                         avalibleslot = false;

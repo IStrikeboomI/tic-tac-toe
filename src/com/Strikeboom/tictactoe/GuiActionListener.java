@@ -12,49 +12,58 @@ public class GuiActionListener implements ActionListener {
         //gets button
          JButton button = (JButton) e.getSource();
 
+         //the only way to differntiate the buttons is through positions
         switch (button.getY()) {
             case 20:
-                //button 1
-                if (button.getX() == 20) {
-                    checkandrun(0);
-                }
-                //button 2
-                else if (button.getX() == 120) {
-                    checkandrun(1);
-                }
-                //button 3
-                else {
-                    checkandrun(2);
+                switch (button.getX()) {
+                    //button 1
+                    case 20:
+                        checkandrun(0);
+                    break;
+                    //button 2
+                    case 120:
+                        checkandrun(1);
+                        break;
+                    //button 3
+                    case 220:
+                        checkandrun(2);
+                        break;
                 }
                 break;
 
             case 120:
-                //button 4
-                if (button.getX() == 20) {
-                    checkandrun(3);
-                }
-                //button 5
-                else if (button.getX() == 120) {
-                    checkandrun(4);
-                }
-                //button 6
-                else {
-                    checkandrun(5);
+
+                switch (button.getX()) {
+                    //button 4
+                    case 20:
+                        checkandrun(3);
+                        break;
+                    //button 5
+                    case 120:
+                        checkandrun(4);
+                        break;
+                    //button 6
+                    case 220:
+                        checkandrun(5);
+                        break;
                 }
                 break;
 
             case 220:
-                //button 7
-                if (button.getX() == 20) {
-                    checkandrun(6);
-                }
-                //button 8
-                else if (button.getX() == 120) {
-                    checkandrun(7);
-                }
-                //button 9
-                else {
-                    checkandrun(8);
+                switch (button.getX()) {
+                    //button 7
+                    case 20:
+                        checkandrun(6);
+                        break;
+                    //button 8
+                    case 120:
+                        checkandrun(7);
+
+                        break;
+                    //button 9
+                    case 220:
+                        checkandrun(8);
+                        break;
                 }
                 break;
         }

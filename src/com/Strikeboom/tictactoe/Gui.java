@@ -4,13 +4,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+
 public class Gui {
     private static JFrame frame;
     private static String Text = "Your Turn!";
     private static JLabel label;
     private static JLabel endlabel;
-    private static ArrayList<JButton> buttons = new ArrayList<JButton>();
-    private static ArrayList<JLabel> boardlabels = new ArrayList<JLabel>();
+    private static final ArrayList<JButton> buttons = new ArrayList<>();
+    private static final ArrayList<JLabel> boardlabels = new ArrayList<>();
 
     protected static String[] buttonstates = new String[9];
     protected static boolean playerturn = true;
@@ -39,6 +40,7 @@ public class Gui {
 
         endlabel = new JLabel();
         endlabel.setFont(endlabel.getFont().deriveFont(Font.BOLD,50f));
+        endlabel.setSize(400,100);
 
         panel.add(label);
 
@@ -50,6 +52,7 @@ public class Gui {
                     button.setBounds(y +20 ,i+20,30,30);
                     button.addActionListener(new GuiActionListener());
                     buttons.add(button);
+
                     JLabel templabel = new JLabel();
                     templabel.setBounds(y +23,i+13,50,50);
                     templabel.setFont(templabel.getFont().deriveFont(45f));
@@ -66,44 +69,39 @@ public class Gui {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
-    protected static void checkandrun(int index,boolean playerturn) {
+    protected static void checkandrun(int index,boolean isPlayerturn) {
         buttons.get(index).setLocation(-29,-29);
-        buttonstates[index] = playerturn ? "X":"O";
+        buttonstates[index] = isPlayerturn ? "X":"O";
         boardlabels.get(index).setText(Gui.buttonstates[index]);
-        boardlabels.get(index).setForeground(playerturn ? new Color(255, 56, 69): new Color(73, 90, 255));
+        boardlabels.get(index).setForeground(isPlayerturn ? new Color(255, 56, 69): new Color(73, 90, 255));
         buttons.get(index).removeActionListener(new GuiActionListener());
-        label.setText(playerturn ? "Your Turn!":"Opponent's Turn!");
-        label.setLocation(playerturn? new Point(110,280):new Point(87,280));
+        label.setText(isPlayerturn ? "Your Turn!":"Opponent's Turn!");
+        label.setLocation(isPlayerturn? new Point(110,280):new Point(87,280));
         CheckForWin.checkforwins();
-        Gui.playerturn = !playerturn;
+        Gui.playerturn = !isPlayerturn;
     }
-    protected static void ongameend(int typeofend) {
+    protected static void ongameend(EnumWinTypes WinType) {
             Gui.gameended = true;
             //makes a new background to remove everything
             JPanel newpanel = new JPanel(null);
             frame.setContentPane(newpanel);
             newpanel.revalidate();
             newpanel.repaint();
-            /*
-            0 is a tie
-            1 is a win
-            2 is a loss
-            */
-            switch (typeofend) {
-                case 0:
+
+            endlabel.setLocation(20,100);
+
+            switch (WinType) {
+                case TIE:
                     if (endlabel.getText() != null) {
                         endlabel.setText("Tie!");
                     }
-                    endlabel.setBounds(85,100,400,100);
+                    endlabel.setLocation(85,100);
                 break;
-                case 1:
+                case WIN:
                     endlabel.setText("You Won!");
-                    endlabel.setBounds(20,100,400,100);
                 break;
-                case 2:
+                case LOSS:
                     endlabel.setText("You Lost!");
-                    endlabel.setBounds(20,100,400,100);
-
                 break;
             }
             newpanel.add(endlabel);
