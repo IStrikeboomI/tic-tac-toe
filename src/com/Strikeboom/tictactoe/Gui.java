@@ -1,17 +1,18 @@
 package com.Strikeboom.tictactoe;
 
 import javax.swing.*;
+
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.List;
 
 
-public class Gui {
+public final class Gui {
     private static JFrame frame;
-    private static String Text = "Your Turn!";
     private static JLabel label;
     private static JLabel endlabel;
-    private static final ArrayList<JButton> buttons = new ArrayList<>();
-    private static final ArrayList<JLabel> boardlabels = new ArrayList<>();
+    private static final List<JButton> buttons = new ArrayList<>();
+    private static final List<JLabel> boardlabels = new ArrayList<>();
 
     protected static String[] buttonstates = new String[9];
     protected static boolean playerturn = true;
@@ -20,7 +21,7 @@ public class Gui {
     protected Gui() {
         frame = new JFrame("Tic-Tac-Toe");
 
-        JPanel panel = new JPanel() {
+        JPanel panel = new JPanel(null) {
             @Override
             protected void paintComponent(Graphics g) {
                 //draws lines
@@ -31,12 +32,11 @@ public class Gui {
                 g.drawLine(0,190,270,190);
             }
         };
-        panel.setLayout(new GroupLayout(panel));
 
-        label = new JLabel(Text);
-        label.setSize(100,10);
-        label.setLocation(110,280);
+        label = new JLabel();
+        label.setBounds(110,280,100,10);
         label.setFont(label.getFont().deriveFont(Font.BOLD));
+        label.setText("Your Turn!");
 
         endlabel = new JLabel();
         endlabel.setFont(endlabel.getFont().deriveFont(Font.BOLD,50f));
@@ -74,9 +74,8 @@ public class Gui {
         buttonstates[index] = isPlayerturn ? "X":"O";
         boardlabels.get(index).setText(Gui.buttonstates[index]);
         boardlabels.get(index).setForeground(isPlayerturn ? new Color(255, 56, 69): new Color(73, 90, 255));
-        buttons.get(index).removeActionListener(new GuiActionListener());
-        label.setText(isPlayerturn ? "Your Turn!":"Opponent's Turn!");
-        label.setLocation(isPlayerturn? new Point(110,280):new Point(87,280));
+        label.setText(isPlayerturn ?"Opponent's Turn!":"Your Turn!");
+        label.setLocation(isPlayerturn ?new Point(87,280):new Point(110,280));
         CheckForWin.checkforwins();
         Gui.playerturn = !isPlayerturn;
     }
