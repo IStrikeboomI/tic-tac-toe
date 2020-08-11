@@ -7,14 +7,14 @@ import java.util.TimerTask;
 public class PseudoAi {
     static Random random = new Random();
     private static int randslot;
-    private static Timer timer = new Timer();
+    private static final Timer timer = new Timer();
 
     protected static void PsuedoAi() {
 
         randslot = random.nextInt(8);
         if (!Gui.gameended) {
             //does a timer task to delay computer response
-            timer.schedule(tt(), random.nextInt(1500) + 1000);
+            timer.schedule(tt(), random.nextInt(2000) + 500);
         }
     }
     private static TimerTask tt() {
