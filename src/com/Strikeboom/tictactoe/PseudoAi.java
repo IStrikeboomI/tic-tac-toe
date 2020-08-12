@@ -5,22 +5,22 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class PseudoAi {
-    static Random random = new Random();
-    private static int randslot;
+    private static final Random random = new Random();
     private static final Timer timer = new Timer();
 
     protected static void PsuedoAi() {
-
-        randslot = random.nextInt(8);
         if (!Gui.gameended) {
-            //does a timer task to delay computer response
+            /*does a timer to delay computer response because
+             it makes it seems like the computer is trying to do something bigger */
             timer.schedule(tt(), random.nextInt(2000) + 500);
         }
     }
+    //have to make a method to be able to cancel the timer
     private static TimerTask tt() {
         return new TimerTask() {
             @Override
             public void run() {
+                int randslot = random.nextInt(8);
                 boolean avalibleslot = true;
                 //checks for any avalible slots
                 while (Gui.buttonstates[randslot] != null&&!Gui.playerturn  && !Gui.gameended && avalibleslot) {
