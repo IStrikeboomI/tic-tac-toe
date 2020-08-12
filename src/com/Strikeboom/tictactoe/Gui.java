@@ -50,7 +50,7 @@ public final class Gui {
                     JButton button = new JButton();
                     panel.add(button);
                     button.setBounds(y +20 ,i+20,30,30);
-                    button.addActionListener(new GuiActionListener());
+                    button.addActionListener(new GuiActionListeners());
                     buttons.add(button);
 
                     JLabel templabel = new JLabel();
