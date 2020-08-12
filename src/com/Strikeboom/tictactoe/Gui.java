@@ -10,7 +10,6 @@ import java.util.List;
 public final class Gui {
     private static JFrame frame;
     private static JLabel label;
-    private static JLabel endlabel;
     private static final List<JButton> buttons = new ArrayList<>();
     private static final List<JLabel> boardlabels = new ArrayList<>();
 
@@ -37,10 +36,6 @@ public final class Gui {
         label.setBounds(110,280,100,10);
         label.setFont(label.getFont().deriveFont(Font.BOLD));
         label.setText("Your Turn!");
-
-        endlabel = new JLabel();
-        endlabel.setFont(endlabel.getFont().deriveFont(Font.BOLD,50f));
-        endlabel.setSize(400,100);
 
         panel.add(label);
 
@@ -77,17 +72,21 @@ public final class Gui {
         label.setText(isPlayerturn ?"Opponent's Turn!":"Your Turn!");
         label.setLocation(isPlayerturn ?new Point(87,280):new Point(110,280));
         CheckForWin.checkforwins();
-        Gui.playerturn = !isPlayerturn;
+        playerturn = !isPlayerturn;
     }
     protected static void ongameend(EnumWinTypes WinType) {
-            Gui.gameended = true;
+
+            gameended = true;
+
+            //makes the ending text
+            JLabel endlabel = new JLabel();
+            endlabel.setFont(endlabel.getFont().deriveFont(Font.BOLD,50f));
+            endlabel.setBounds(20,100,400,100);
             //makes a new background to remove everything
             JPanel newpanel = new JPanel(null);
             frame.setContentPane(newpanel);
             newpanel.revalidate();
             newpanel.repaint();
-
-            endlabel.setLocation(20,100);
 
             switch (WinType) {
                 case TIE:
