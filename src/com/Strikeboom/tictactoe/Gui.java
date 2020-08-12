@@ -91,9 +91,7 @@ public final class Gui {
 
             switch (WinType) {
                 case TIE:
-                    if (endlabel.getText() != null) {
-                        endlabel.setText("Tie!");
-                    }
+                    endlabel.setText("Tie!");
                     endlabel.setLocation(85,100);
                 break;
                 case WIN:
