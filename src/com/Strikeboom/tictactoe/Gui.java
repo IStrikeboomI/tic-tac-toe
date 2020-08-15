@@ -10,8 +10,8 @@ import java.util.List;
 public final class Gui {
     private static JFrame frame;
     private static JLabel label;
-    private static final List<JButton> buttons = new ArrayList<>();
-    private static final List<JLabel> boardlabels = new ArrayList<>();
+    private static final List<JButton> buttons = new LinkedList<>();
+    private static final List<JLabel> boardlabels = new LinkedList<>();
 
     protected static String[] buttonstates = new String[9];
     protected static boolean playerturn = true;
