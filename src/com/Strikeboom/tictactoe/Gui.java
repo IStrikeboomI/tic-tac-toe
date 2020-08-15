@@ -3,7 +3,7 @@ package com.Strikeboom.tictactoe;
 import javax.swing.*;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 
