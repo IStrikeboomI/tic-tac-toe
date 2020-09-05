@@ -4,41 +4,42 @@ public class CheckForWin {
 
     protected static void checkforwins() {
         //makes sure that game hasn't ended
-        if (Gui.gameended) return;
-        //horizontal
-        for (int i = 1;i<=9;i += 3) {
-            if (userwin(i,i+1,i+2)) {
-               Gui.ongameend(EnumWinTypes.WIN);
-                return;
+        if (!Gui.gameended) {
+            //horizontal
+            for (int i = 1; i <= 9; i += 3) {
+                if (userwin(i, i + 1, i + 2)) {
+                    Gui.ongameend(EnumWinTypes.WIN);
+                    return;
+                }
+                if (oppenentwin(i, i + 1, i + 2)) {
+                    Gui.ongameend(EnumWinTypes.LOSS);
+                    return;
+                }
             }
-            if (oppenentwin(i,i+1,i+2)) {
-                Gui.ongameend(EnumWinTypes.LOSS);
-                return;
+            //vertical
+            for (int i = 1; i <= 3; i++) {
+                if (userwin(i, i + 3, i + 6)) {
+                    Gui.ongameend(EnumWinTypes.WIN);
+                    return;
+                }
+                if (oppenentwin(i, i + 3, i + 6)) {
+                    Gui.ongameend(EnumWinTypes.LOSS);
+                    return;
+                }
             }
-        }
-        //vertical
-        for (int i = 1;i<=3;i++) {
-            if (userwin(i,i+3,i+6)) {
+            //diagonal
+            if (userwin(1, 5, 9) || userwin(3, 5, 7)) {
                 Gui.ongameend(EnumWinTypes.WIN);
                 return;
             }
-            if (oppenentwin(i,i+3,i+6)) {
+            if (oppenentwin(1, 5, 9) || oppenentwin(3, 5, 7)) {
                 Gui.ongameend(EnumWinTypes.LOSS);
                 return;
             }
-        }
-        //diagonal
-        if (userwin(1,5,9)|| userwin(3,5,7)) {
-            Gui.ongameend(EnumWinTypes.WIN);
-            return;
-        }
-        if (oppenentwin(1,5,9)|| oppenentwin(3,5,7)) {
-            Gui.ongameend(EnumWinTypes.LOSS);
-            return;
-        }
-        //tie
-        if (checkfortie()) {
-            Gui.ongameend(EnumWinTypes.TIE);
+            //tie
+            if (checkfortie()) {
+                Gui.ongameend(EnumWinTypes.TIE);
+            }
         }
     }
 
