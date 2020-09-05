@@ -65,7 +65,9 @@ public final class Gui {
         frame.setVisible(true);
     }
     protected static void checkandrun(int index,boolean isPlayerturn) {
-        buttons.get(index).setLocation(-29,-29);
+        final Point INVISIBLEPOINT = new Point(-29,-29);
+
+        buttons.get(index).setLocation(INVISIBLEPOINT);
         buttonstates[index] = isPlayerturn ? "X":"O";
         boardlabels.get(index).setText(Gui.buttonstates[index]);
         boardlabels.get(index).setForeground(isPlayerturn ? new Color(255, 56, 69): new Color(73, 90, 255));
