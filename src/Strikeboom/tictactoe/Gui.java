@@ -1,4 +1,4 @@
-package com.Strikeboom.tictactoe;
+package Strikeboom.tictactoe;
 
 import javax.swing.*;
 
@@ -33,7 +33,7 @@ public final class Gui {
         };
 
         label = new JLabel();
-        label.setBounds(110,280,100,10);
+        label.setBounds(110,280,100,15);
         label.setFont(label.getFont().deriveFont(Font.BOLD));
         label.setText("Your Turn!");
 

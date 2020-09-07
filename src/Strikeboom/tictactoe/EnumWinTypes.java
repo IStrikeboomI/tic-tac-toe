@@ -1,4 +1,4 @@
-package com.Strikeboom.tictactoe;
+package Strikeboom.tictactoe;
 
 public enum  EnumWinTypes {
     TIE,

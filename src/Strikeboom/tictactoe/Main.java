@@ -1,4 +1,4 @@
-package com.Strikeboom.tictactoe;
+package Strikeboom.tictactoe;
 
 import javax.swing.*;
 
