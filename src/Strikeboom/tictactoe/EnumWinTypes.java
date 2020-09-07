@@ -1,6 +1,6 @@
 package Strikeboom.tictactoe;
 
-public enum  EnumWinTypes {
+public enum EnumWinTypes {
     TIE,
     WIN,
     LOSS
