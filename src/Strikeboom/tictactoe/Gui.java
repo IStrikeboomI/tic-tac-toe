@@ -1,17 +1,15 @@
 package Strikeboom.tictactoe;
 
 import javax.swing.*;
-
 import java.awt.*;
-import java.util.LinkedList;
-import java.util.List;
 
 
 public final class Gui {
+    private static int num = 0;
     private static JFrame frame;
     private static JLabel label;
-    private static final List<JButton> buttons = new LinkedList<>();
-    private static final List<JLabel> boardlabels = new LinkedList<>();
+    private static final JButton[] buttons = new JButton[9];
+    private static final JLabel[] boardlabels = new JLabel[9];
 
     protected static String[] buttonstates = new String[9];
     protected static boolean playerturn = true;
@@ -42,17 +40,17 @@ public final class Gui {
         //creates and positions buttons
         for (short i = 0; i <300;i += 100) {
             for (short y = 0;y<300;y += 100) {
-                    JButton button = new JButton();
-                    panel.add(button);
-                    button.setBounds(y +20 ,i+20,30,30);
-                    button.addActionListener(new GuiActionListeners());
-                    buttons.add(button);
+                    JButton tempButton = new IndexedButton(num);
+                    panel.add(tempButton);
+                    tempButton.setBounds(y +20 ,i+20,30,30);
+                    buttons[num] = tempButton;
 
                     JLabel templabel = new JLabel();
                     templabel.setBounds(y +23,i+13,50,50);
                     templabel.setFont(templabel.getFont().deriveFont(45f));
                     panel.add(templabel);
-                    boardlabels.add(templabel);
+                    boardlabels[num] = templabel;
+                    num++;
             }
         }
 
@@ -65,10 +63,10 @@ public final class Gui {
         frame.setVisible(true);
     }
     protected static void checkandrun(int index,boolean isPlayerturn) {
-        buttons.get(index).setLocation(-29,-29);
+        buttons[index].setLocation(-29,-29);
         buttonstates[index] = isPlayerturn ? "X":"O";
-        boardlabels.get(index).setText(Gui.buttonstates[index]);
-        boardlabels.get(index).setForeground(isPlayerturn ? new Color(255, 56, 69): new Color(73, 90, 255));
+        boardlabels[index].setText(Gui.buttonstates[index]);
+        boardlabels[index].setForeground(isPlayerturn ? new Color(255, 56, 69): new Color(73, 90, 255));
         label.setText(isPlayerturn ?"Opponent's Turn!":"Your Turn!");
         label.setLocation(isPlayerturn ?new Point(87,280):new Point(110,280));
         CheckForWin.checkforwins();
