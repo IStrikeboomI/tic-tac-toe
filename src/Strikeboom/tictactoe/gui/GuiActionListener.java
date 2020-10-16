@@ -1,4 +1,6 @@
-package Strikeboom.tictactoe;
+package Strikeboom.tictactoe.gui;
+
+import Strikeboom.tictactoe.logic.PseudoAi;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

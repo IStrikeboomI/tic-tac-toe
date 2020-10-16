@@ -1,4 +1,6 @@
-package Strikeboom.tictactoe;
+package Strikeboom.tictactoe.logic;
+
+import Strikeboom.tictactoe.gui.Gui;
 
 import java.util.Random;
 import java.util.Timer;
@@ -8,7 +10,7 @@ public class PseudoAi {
     private static final Random random = new Random();
     private static final Timer timer = new Timer();
 
-    protected static void PsuedoAi() {
+    public static void PsuedoAi() {
         if (!Gui.gameended) {
             /*does a timer to delay computer response because
              it makes it seems like the computer is trying to do something bigger */

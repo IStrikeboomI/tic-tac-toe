@@ -1,8 +1,10 @@
-package Strikeboom.tictactoe;
+package Strikeboom.tictactoe.logic;
+
+import Strikeboom.tictactoe.gui.Gui;
 
 public class CheckForWin {
 
-    protected static void checkforwins() {
+    public static void checkforwins() {
         //makes sure that game hasn't ended
         if (!Gui.gameended) {
             //horizontal

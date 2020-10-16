@@ -1,4 +1,7 @@
-package Strikeboom.tictactoe;
+package Strikeboom.tictactoe.gui;
+
+import Strikeboom.tictactoe.logic.CheckForWin;
+import Strikeboom.tictactoe.logic.EnumWinTypes;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,11 +14,11 @@ public final class Gui {
     private static final JButton[] buttons = new JButton[9];
     private static final JLabel[] boardlabels = new JLabel[9];
 
-    protected static String[] buttonstates = new String[9];
-    protected static boolean playerturn = true;
-    protected static boolean gameended = false;
+    public static String[] buttonstates = new String[9];
+    public static boolean playerturn = true;
+    public static boolean gameended = false;
 
-    protected Gui() {
+    public Gui() {
         frame = new JFrame("Tic-Tac-Toe");
 
         JPanel panel = new JPanel(null) {
@@ -62,7 +65,7 @@ public final class Gui {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
-    protected static void checkandrun(int index,boolean isPlayerturn) {
+    public static void checkandrun(int index,boolean isPlayerturn) {
         buttons[index].setLocation(-29,-29);
         buttonstates[index] = isPlayerturn ? "X":"O";
         boardlabels[index].setText(Gui.buttonstates[index]);
@@ -72,7 +75,7 @@ public final class Gui {
         CheckForWin.checkforwins();
         playerturn = !isPlayerturn;
     }
-    protected static void ongameend(EnumWinTypes WinType) {
+    public static void ongameend(EnumWinTypes WinType) {
 
            gameended = true;
 

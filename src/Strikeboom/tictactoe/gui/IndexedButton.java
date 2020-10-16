@@ -1,4 +1,4 @@
-package Strikeboom.tictactoe;
+package Strikeboom.tictactoe.gui;
 
 import javax.swing.*;
 

@@ -1,5 +1,7 @@
 package Strikeboom.tictactoe;
 
+import Strikeboom.tictactoe.gui.Gui;
+
 import javax.swing.*;
 
 public class Main {
